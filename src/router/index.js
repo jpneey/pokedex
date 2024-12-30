@@ -6,6 +6,7 @@ import Sinnoh from '../views/Sinnoh.vue'
 import Unova from '../views/Unova.vue'
 import Kalos from '../views/Kalos.vue'
 import Galar from '../views/Galar.vue'
+import Pokemon from '../views/Pokemon.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +45,12 @@ const router = createRouter({
       path: '/galar',
       name: 'galar',
       component: Galar,
+    },
+    {
+      path: '/pokemon/:id',
+      name: 'pokemon',
+      component: Pokemon,
+      props: true
     }
   ],
   scrollBehavior(to, from, savedPosition) {

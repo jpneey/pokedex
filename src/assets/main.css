@@ -1,7 +1,8 @@
 html, body {
   height: 100%;
-  background: #951e1e;
-  color: #fff;
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 .spacing {
@@ -13,7 +14,7 @@ html, body {
   display: block;
   position: relative;
   width: 100%;
-  padding-top: 100%;
+  padding-top: 50%;
   overflow: hidden;
 }
 
@@ -38,7 +39,7 @@ html, body {
   content: '';
   width: 30px;
   height: 2px;
-  background: #fff;
+  background: #ddd;
   position: absolute;
   top: calc( 50% + 2px );
   right: -40px;
@@ -49,5 +50,132 @@ html, body {
   font-size: 70px;
   font-weight: 900;
   opacity: .1;
-  transform: translateY(-50%) translateX(20px);
+  transform: translateY(-50%);
+}
+
+.pokemon {
+  padding-top: 200px;
+  max-width: 600px;
+}
+
+.pokemon-image {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  margin-bottom: -80px;
+}
+
+.pokemon-meta {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.progress {
+  height: 3px;
+}
+
+.skeleton-line {
+  height: 12px;
+  margin-bottom:6px;
+  border-radius: 2px;
+  background: rgba(130, 130, 130, 0.2);
+  background: linear-gradient(to right, rgba(130, 130, 130, 0.2) 8%, rgba(130, 130, 130, 0.3) 18%, rgba(130, 130, 130, 0.2) 33%);
+  background-size: 800px 100px;
+  animation: wave-lines 2s infinite ease-out;
+}
+
+@keyframes wave-lines {
+  0% {
+      background-position: -468px 0;
+  }
+   100% {
+      background-position: 468px 0;
+  }
+}
+
+.bg-bug {
+  color: #111;
+  background: #94bc4a ;
+}
+.bg-dark {
+  color: #fff;
+  border-color: #fff !important;
+}
+.bg-dragon {
+  color: #111;
+  background: #6a7baf;
+}
+.bg-electric {
+  color: #111;
+  background:#e5c531;
+}
+.bg-fairy {
+  color: #111;
+  background: #e397d1;
+}
+.bg-fighting {
+  color: #111;
+  background:#cb5f48;
+}
+.bg-fire {
+  color: #111;
+  background: #ea7a3c;
+}
+.bg-flying {
+  color: #111;
+  background: #7da6de;
+}
+.bg-ghost {
+  color: #111;
+  background:#846ab6;
+}
+.bg-grass {
+  color: #111;
+  background: #71c558;
+}
+.bg-ground {
+  color: #111;
+  background: #cc9f4f;
+}
+.bg-ice {
+  color: #111;
+  background: #70cbd4;
+}
+.bg-normal {
+  color: #111;
+  background: #aab09f ;
+}
+.bg-poison {
+  color: #111;
+  background: #b468b7 ;
+}
+.bg-psychic {
+  color: #111;
+  background: #e5709b ;
+}
+.bg-rock {
+  color: #111;
+  background: #b2a061 ;
+}
+.bg-steel {
+  color: #111;
+  background: #89a1b0 ;
+}
+.bg-water {
+  color: #111;
+  background: #539ae2 ;
+}
+.box.bg-dark .text-body,
+.box.bg-dark .text-black,
+.box.bg-dark {
+  color: #fff !important;
+}
+
+.badge-type {
+  padding: 2px 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  border-radius: 25px;
 }
