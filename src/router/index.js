@@ -46,6 +46,9 @@ const router = createRouter({
       component: Galar,
     }
   ],
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0, behavior: 'instant' }
+  }
 })
 
 export default router

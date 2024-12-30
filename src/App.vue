@@ -8,28 +8,32 @@ import { RouterLink, RouterView } from 'vue-router'
     <div class="container h-100">
       <div class="row h-100">
         <div class="col col-12 col-md-4 col-xxl-3 h-auto">
-          <nav class="h-100 border-end spacing">
-            <ul>
+          <nav class="h-100  border-end spacing">
+            <ul class="pokedex-nav position-fixed top-50 translate-middle-y">
               <li>
-                <RouterLink to="/">Kanto</RouterLink>
+                <h2 class="mb-0">Poke<s class="opacity-25 fw-normal">dex</s>list.</h2>
+                <code class="text-white opacity-25">version 1.0.0</code>
               </li>
               <li>
-                <RouterLink to="/jhoto">Jhoto</RouterLink>
+                <RouterLink class="text-decoration-none text-white" to="/">Kanto</RouterLink>
               </li>
               <li>
-                <RouterLink to="/hoenn">Hoenn</RouterLink>
+                <RouterLink class="text-decoration-none text-white" to="/jhoto">Jhoto</RouterLink>
               </li>
               <li>
-                <RouterLink to="/sinnoh">Sinnoh</RouterLink>
+                <RouterLink class="text-decoration-none text-white" to="/hoenn">Hoenn</RouterLink>
               </li>
               <li>
-                <RouterLink to="/unova">Unova</RouterLink>
+                <RouterLink class="text-decoration-none text-white" to="/sinnoh">Sinnoh</RouterLink>
               </li>
               <li>
-                <RouterLink to="/kalos">Kalos</RouterLink>
+                <RouterLink class="text-decoration-none text-white" to="/unova">Unova</RouterLink>
               </li>
               <li>
-                <RouterLink to="/galar">Galar</RouterLink>
+                <RouterLink class="text-decoration-none text-white" to="/kalos">Kalos</RouterLink>
+              </li>
+              <li>
+                <RouterLink class="text-decoration-none text-white" to="/galar">Galar</RouterLink>
               </li>
             </ul>
           </nav>

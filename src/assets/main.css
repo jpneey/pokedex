@@ -1,5 +1,7 @@
 html, body {
   height: 100%;
+  background: #951e1e;
+  color: #fff;
 }
 
 .spacing {
@@ -13,4 +15,39 @@ html, body {
   width: 100%;
   padding-top: 100%;
   overflow: hidden;
+}
+
+.pokedex-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pokedex-nav li {
+  margin: 0;
+  padding: 8px 0;
+}
+
+.pokedex-nav a {
+  font-size: 20px;
+  letter-spacing:1px;
+  position: relative;
+}
+
+.pokedex-nav a.router-link-active::after {
+  content: '';
+  width: 30px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  top: calc( 50% + 2px );
+  right: -40px;
+  transform: translateY(-50%);
+}
+
+.pokemon-number {
+  font-size: 70px;
+  font-weight: 900;
+  opacity: .1;
+  transform: translateY(-50%) translateX(20px);
 }
