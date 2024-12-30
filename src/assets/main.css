@@ -58,6 +58,10 @@ html, body {
   max-width: 600px;
 }
 
+.mega-text {
+  top: 260px;
+}
+
 .pokemon-image {
   width: 100%;
   height: auto;
@@ -178,4 +182,13 @@ html, body {
   letter-spacing: 1px;
   font-weight: bold;
   border-radius: 25px;
+}
+
+.mega-text {
+  font-size: 200px;
+  white-space: nowrap;
+  display: block;
+  opacity: .25;
+  color: #fff;
+  font-weight: 900;
 }

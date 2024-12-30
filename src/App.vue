@@ -35,6 +35,12 @@ import { RouterLink, RouterView } from 'vue-router'
               <li>
                 <RouterLink class="text-decoration-none text-body" to="/galar">Galar</RouterLink>
               </li>
+              <li>
+                <hr>
+              </li>
+              <li>
+                <RouterLink class="text-decoration-none text-body" to="/all">Search</RouterLink>
+              </li>
             </ul>
           </nav>
         </div>

@@ -7,6 +7,7 @@ import Unova from '../views/Unova.vue'
 import Kalos from '../views/Kalos.vue'
 import Galar from '../views/Galar.vue'
 import Pokemon from '../views/Pokemon.vue'
+import All from '../views/All.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +51,12 @@ const router = createRouter({
       path: '/pokemon/:id',
       name: 'pokemon',
       component: Pokemon,
+      props: true
+    },
+    {
+      path: '/all',
+      name: 'all',
+      component: All,
       props: true
     }
   ],
