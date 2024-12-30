@@ -16582,5 +16582,25 @@
       "Sp. Defense": 65,
       "Speed": 34
     }
+  },
+  {
+    "id": 810,
+    "name": {
+      "english": "-",
+      "japanese": "-",
+      "chinese": "",
+      "french": ""
+    },
+    "type": [
+      ""
+    ],
+    "base": {
+      "HP": 0,
+      "Attack": 0,
+      "Defense": 0,
+      "Sp. Attack": 0,
+      "Sp. Defense": 0,
+      "Speed": 0
+    }
   }
 ]
