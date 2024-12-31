@@ -59,8 +59,8 @@
 </script>
 
 <template>
-  <div class="row spacing">
-    <div class="col col-12 mb-4" v-if="route.name == 'all'">
+  <div class="row spacing" v-if="route.name == 'all'">
+    <div class="col col-12 mb-md-4 mb-0">
       <div class="position-relative">
         <input
           type="text"
@@ -73,7 +73,7 @@
         </RouterLink>
       </div>
 
-      <div class="position-relative p-3 bg-light mt-4 rounded">
+      <div class="position-relative p-3 bg-light mt-md-4 mt-3 rounded">
         <template v-for="poketype in PokeTypes" :key="poketype.english">
           <span 
             @click="toggleType(poketype.english)" 
@@ -94,8 +94,8 @@
   </div>
 
   <!-- Display filtered list of Pokémon -->
-  <div class="row row-cols-1 row-cols-lg-2">
-    <div class="col mb-4" v-for="pokemon in filteredMons" :key="pokemon.id">
+  <div class="row row-cols-1 row-cols-lg-2 mt-3">
+    <div class="col mb-md-4 mb-3" v-for="pokemon in filteredMons" :key="pokemon.id">
       <Pokemoncard :pokemon="pokemon" />
     </div>
   </div>

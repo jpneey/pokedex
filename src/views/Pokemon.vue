@@ -64,13 +64,13 @@
 
 </script>
 <template>
-    <div :class="'bg-' + pokemon.type[0].toLowerCase()" class="position-relative mt-5 rounded overflow-hidden" :key="pokemon.id">
+    <div :class="'bg-' + pokemon.type[0].toLowerCase()" class="position-relative mt-3 mt-md-5 rounded overflow-hidden" :key="pokemon.id">
         <p class="mega-text position-absolute start-50 translate-middle-x">{{ pokemon.name.japanese }}</p>
         <section class="pokemon mx-auto position-relative overflow-hidden">
             <img :src="getImage( pokemon.id )" :alt="pokemon.name.english" width="400" height="400" class="pokemon-image mx-auto d-block position-relative" style="z-index: 2;">
 
             <div class="pokemon-meta bg-light d-block text-body w-100 spacing position-relative">
-                <div class="content-tabs p-5">
+                <div class="content-tabs px-4 py-5 p-md-5">
                     <h1 class="mb-1">{{ pokemon.name.english }} <code class="h5 fw-bold">{{ pokemon.name.japanese }}</code></h1>
                     <div class="types d-flex flex-wrap mb-2">
                         <template v-for="type_ in pokemon.type">
@@ -86,14 +86,13 @@
                         <p class="mb-4">{{ getEnglishFlavorText( fetched.flavor_text_entries ) }}</p>
                     </template>
                     <div class="row align-items-center align-items-center pb-1" v-for="attr in base">
-                        <div class="col col-12 col-md-3 fw-bold opacity-75">{{ attr[0] }}</div>
-                        <div class="col col-12 col-md-2 text-md-end">
+                        <div class="col col-5 col-md-3 fw-bold opacity-75">{{ attr[0] }}</div>
+                        <div class="col col-2 col-md-2 text-md-end d-none d-md-block">
                             {{ pokemon.base[attr[0]] }}
                         </div>
-                        <div class="col col-12 col-md-7">
-                            
+                        <div class="col col-7 col-md-7">
                             <div class="progress w-100 ms-3" role="progressbar">
-                                <div class="progress-bar" :style="'width:' + getPercent(attr[1], pokemon.base[attr[0]]) +'%'"></div>
+                                <div class="progress-bar" :class="'bg-' + pokemon.type[0].toLowerCase()" :style="'width:' + getPercent(attr[1], pokemon.base[attr[0]]) +'%'"></div>
                             </div>
                         </div>
                     </div>
