@@ -2,8 +2,6 @@
 
     import { ref, onMounted, defineProps } from 'vue';
     import Pokedata from '../assets/pokedex.json';
-    import { RouterLink } from 'vue-router';
-
     import * as Pokedex from 'pokeapi-js-wrapper';
 
     const P = new Pokedex.Pokedex()
@@ -66,7 +64,7 @@
 
 </script>
 <template>
-    <div :class="'bg-' + pokemon.type[0].toLowerCase()" class="position-relative overflow-hidden" :key="pokemon.id">
+    <div :class="'bg-' + pokemon.type[0].toLowerCase()" class="position-relative mt-5 rounded overflow-hidden" :key="pokemon.id">
         <p class="mega-text position-absolute start-50 translate-middle-x">{{ pokemon.name.japanese }}</p>
         <section class="pokemon mx-auto position-relative overflow-hidden">
             <img :src="getImage( pokemon.id )" :alt="pokemon.name.english" width="400" height="400" class="pokemon-image mx-auto d-block position-relative" style="z-index: 2;">
@@ -87,10 +85,13 @@
                     <template v-else>
                         <p class="mb-4">{{ getEnglishFlavorText( fetched.flavor_text_entries ) }}</p>
                     </template>
-                    <div class="row align-items-center pb-1" v-for="attr in base">
-                        <div class="col col-12 col-md-4 fw-bold opacity-75">{{ attr[0] }}</div>
-                        <div class="col col-12 col-md-8 d-flex align-items-center">
+                    <div class="row align-items-center align-items-center pb-1" v-for="attr in base">
+                        <div class="col col-12 col-md-3 fw-bold opacity-75">{{ attr[0] }}</div>
+                        <div class="col col-12 col-md-2 text-md-end">
                             {{ pokemon.base[attr[0]] }}
+                        </div>
+                        <div class="col col-12 col-md-7">
+                            
                             <div class="progress w-100 ms-3" role="progressbar">
                                 <div class="progress-bar" :style="'width:' + getPercent(attr[1], pokemon.base[attr[0]]) +'%'"></div>
                             </div>
