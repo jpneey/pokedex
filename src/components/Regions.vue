@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <ul class="pokedex-nav">
+    <ul class="pokedex-nav bg-light p-5 rounded">
         <li>
         <h2 class="mb-0">Poké<s class="opacity-25 fw-normal">dex</s>list.</h2>
         <code class="text-body opacity-25">version 1.0.0</code>

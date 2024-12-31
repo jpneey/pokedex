@@ -16,7 +16,7 @@
   <main class="h-100">
     <div class="container h-100">
       <div class="row h-100">
-        <div class="col col-12 col-md-4 col-xxl-3 h-auto">
+        <div class="col col-12 col-md-5 col-xxl-3 h-auto">
           <nav class="h-100  border-end spacing d-none d-md-block">
             <div class="position-fixed top-50 translate-middle-y">
               <Regions></Regions>
@@ -36,10 +36,34 @@
             </div>
           </nav>
         </div>
-        <div class="col col-12 col-md-8 col-xxl-8 offset-xxl-1 ">
-          <RouterView />
+        <div class="col col-12 col-md-7 col-xxl-8 offset-xxl-1 ">
+          <router-view v-slot="{ Component, route }">
+            <Transition name="page-opacity" mode="out-in">
+              <div :key="route.name">  
+                <component :is="Component"></component>
+              </div>
+            </Transition>
+          </router-view>
         </div>
       </div>
     </div>
   </main>
 </template>
+
+<style>
+  .page-opacity-enter-active,
+  .page-opacity-leave-active {
+    transition: all 0.3s ease;
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  .page-opacity-enter-from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  .page-opacity-leave-to {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+</style>

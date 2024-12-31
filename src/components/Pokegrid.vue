@@ -93,21 +93,14 @@
     </div>
   </div>
 
-  <!-- Display filtered list of Pokémon -->
-  <div class="row row-cols-1 row-cols-lg-2 mt-3">
-    <div class="col mb-md-4 mb-3" v-for="pokemon in filteredMons" :key="pokemon.id">
-      <Pokemoncard :pokemon="pokemon" />
-    </div>
+  <div class="spacing d-none d-md-block" v-else>
+    <!-- Empty spacer -->
   </div>
 
-  <div class="row" v-if="s && route.name !== 'all'">
-    <div class="col col-12">
-      <div class="p-3 px-4 rounded mb-4 bg-light d-block d-lg-flex justify-content-between align-items-center">
-        <span>Can't find what you wanted? Try searching all region</span>
-        <RouterLink :to="'/all?s=' + s" class="btn btn-sm bg-ice ms-2 my-0 text-white">
-          Search all region
-        </RouterLink>
-      </div>
+  <!-- Display filtered list of Pokémon -->
+  <div class="row row-cols-1 row-cols-lg-2 mt-3 mt-md-0">
+    <div class="col mb-md-4 mb-3" v-for="pokemon in filteredMons" :key="pokemon.id">
+      <Pokemoncard :pokemon="pokemon" />
     </div>
   </div>
 </template>

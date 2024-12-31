@@ -8,7 +8,7 @@
 
     const getSprite = ( pokemonId ) => {
         var sprite = String(pokemonId).padStart(3, '0');
-        return "./thumbnails/" + sprite + ".png";
+        return "./images/" + sprite + ".png";
     }
 
 </script>
