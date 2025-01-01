@@ -2,12 +2,12 @@
 
   import Pokedex from '../assets/pokedex.json'
   import { prepareMon } from '@/assets/prepare';
-  import Pokegrid from '@/components/Pokegrid.vue';
+  import Pokelist from '@/components/Pokelist.vue';
 
   const mons = prepareMon( Pokedex, 0, 9999 );
   
 </script>
 
 <template>
-  <Pokegrid :mons="mons"></Pokegrid>  
+  <Pokelist :mons="mons"></Pokelist>  
 </template>

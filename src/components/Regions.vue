@@ -9,7 +9,7 @@
         <code class="text-body opacity-25">version 1.0.0</code>
         </li>
         <li>
-        <RouterLink class="text-decoration-none text-body" to="/">Kanto</RouterLink>
+        <RouterLink class="text-decoration-none text-body" to="/">Kantodex</RouterLink>
         </li>
         <li>
         <RouterLink class="text-decoration-none text-body" to="/jhoto">Jhoto</RouterLink>
@@ -30,7 +30,7 @@
         <RouterLink class="text-decoration-none text-body" to="/galar">Galar</RouterLink>
         </li>
         <li class="border-top">
-        <RouterLink class="text-decoration-none text-body" to="/all">Search</RouterLink>
+        <RouterLink class="text-decoration-none text-body" to="/all">National</RouterLink>
         </li>
     </ul>
 </template>
