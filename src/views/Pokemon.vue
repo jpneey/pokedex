@@ -1,6 +1,7 @@
 <script setup>
 
-    import { ref, onMounted, defineProps } from 'vue';
+    import { ref, computed, watch, defineProps } from 'vue';
+    import { RouterLink } from 'vue-router';
     import Pokedata from '../assets/pokedex.json';
     import * as Pokedex from 'pokeapi-js-wrapper';
 
@@ -8,11 +9,10 @@
 
     const props = defineProps( ['id'] );
 
-    const pokemons = Pokedata.filter(arr => {
-        return arr.id == props.id;
-    })
-
-    const pokemon = pokemons[0];
+    const index = computed(() => Pokedata.findIndex(arr => arr.id == props.id));
+    const pokemon = computed(() => Pokedata[index.value]);
+    const prev = computed(() => Pokedata[index.value - 1]);
+    const next = computed(() => Pokedata[index.value + 1]);
 
     const getImage = ( pokemonId ) => {
         var sprite = String(pokemonId).padStart(3, '0');
@@ -49,18 +49,20 @@
         return text.replace( '', ' ' );
     }
 
-    onMounted(async () => {
+    watch(() => props.id, async ( id ) => {
+        loading.value = true;
         try {
-            const response = await P.getPokemonSpeciesByName( props.id );
-            const response_ = await P.getPokemonByName( props.id );
+            const response = await P.getPokemonSpeciesByName( id );
+            const response_ = await P.getPokemonByName( id );
+            if ( id !== props.id ) return;
             fetched.value = response;
             fetched_meta.value = response_;
         } catch (err) {
             error.value = `Error fetching data: ${err.message}`;
         } finally {
-            loading.value = false;
+            if ( id === props.id ) loading.value = false;
         }
-    });
+    }, { immediate: true });
 
 </script>
 <template>
@@ -71,7 +73,11 @@
 
             <div class="pokemon-meta bg-light d-block text-body w-100 spacing position-relative">
                 <div class="content-tabs px-4 py-5 p-md-5">
-                    <h1 class="mb-1">{{ pokemon.name.english }} <code class="h5 fw-bold">{{ pokemon.name.japanese }}</code></h1>
+                    <h1 class="mb-1">
+                        <code class="h5 d-block my-0 opacity-50 text-body">{{ String( pokemon.id ).padStart(3, '0') }}</code>
+                        {{ pokemon.name.english }}
+                        <code class="h5 fw-bold">{{ pokemon.name.japanese }}</code>
+                    </h1>
                     <div class="types d-flex flex-wrap mb-2">
                         <template v-for="type_ in pokemon.type">
                             <span class="badge-type me-1 my-1" :class="'bg-' + type_.toLowerCase()">{{ type_ }}</span>
@@ -108,5 +114,15 @@
             </div>
 
         </section>
+    </div>
+    
+    <div class="d-flex justify-content-between mt-4 pb-4">
+        <RouterLink v-if="prev" :to="{ name: 'pokemon', params: { id: prev.id } }" class="btn btn-dark">
+            &larr; {{ prev.name.english }}
+        </RouterLink>
+        <span v-else></span>
+        <RouterLink v-if="next" :to="{ name: 'pokemon', params: { id: next.id } }" class="btn btn-dark">
+            {{ next.name.english }} &rarr;
+        </RouterLink>
     </div>
 </template>

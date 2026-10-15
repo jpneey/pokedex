@@ -39,7 +39,7 @@
         <div class="col col-12 col-md-7 col-xxl-8 offset-xxl-1 ">
           <router-view v-slot="{ Component, route }">
             <Transition name="page-opacity" mode="out-in">
-              <div :key="route.name">  
+              <div :key="route.name + (route.params.id || '')">  
                 <component :is="Component"></component>
               </div>
             </Transition>

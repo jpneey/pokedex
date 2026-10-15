@@ -1,21 +1,21 @@
 <script setup>
     
-    import { defineProps } from 'vue';
+    import { computed, defineProps } from 'vue';
     import { RouterLink } from 'vue-router';
     
     const props = defineProps(['pokemon']);
-    const pokemon = props.pokemon;
+    const pokemon = computed(() => props.pokemon);
 
     const getSprite = ( pokemonId ) => {
         var sprite = String(pokemonId).padStart(3, '0');
-        return "./images/" + sprite + ".png";
+        return import.meta.env.BASE_URL + "images/" + sprite + ".png";
     }
 
 </script>
 
 <template v-if="pokemon">
 
-    <RouterLink :to="'/pokemon/' + pokemon.id " class="box text-decoration-none rounded text-body" :class="'bg-' + pokemon.type[0].toLowerCase()">
+    <RouterLink :to="{ name: 'pokemon', params: { id: pokemon.id } }" class="box text-decoration-none rounded text-body" :class="'bg-' + pokemon.type[0].toLowerCase()">
         <p class="pokemon-number m-0 position-absolute top-50 end-0 p-3">{{ String( pokemon.id ).padStart(3, '0') }}</p>
         <div class="meta position-absolute w-100 p-4 bottom-0 start-0">
             <img :src="getSprite( pokemon.id )" :alt="pokemon.name.english" width="100" height="100" loading="lazy" class="position-absolute bottom-0 end-0 m-4">
