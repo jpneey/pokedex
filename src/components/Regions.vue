@@ -30,7 +30,7 @@
         <RouterLink class="text-decoration-none text-body" to="/galar">Galar</RouterLink>
         </li>
         <li class="border-top">
-        <RouterLink class="text-decoration-none text-body" to="/all">National</RouterLink>
+        <RouterLink class="text-decoration-none text-body" to="/all">Search</RouterLink>
         </li>
     </ul>
 </template>
