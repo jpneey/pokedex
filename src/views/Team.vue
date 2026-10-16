@@ -8,7 +8,7 @@
 
     const team = computed(() => captured.value.map(id => Pokedata.find(p => p.id == id)).filter(Boolean));
 
-    const getImage = ( id ) => "../images/" + String(id).padStart(3, '0') + ".png";
+    import { getImage, onImageError } from '@/utils/image';
 
     const STORE_KEY = 'team-transforms';
     const load = () => {
@@ -61,7 +61,7 @@
                 <figure v-for="p in team" :key="p.id" class="hof-slot">
                     <div class="hof-box" :style="style( p.id )">
                         <RouterLink :to="{ name: 'pokemon', params: { id: p.id } }" :title="p.name.english">
-                            <img :src="getImage( p.id )" :alt="p.name.english" draggable="false">
+                            <img :src="getImage( p.id )" @error="onImageError( $event, p.id )" :alt="p.name.english" draggable="false">
                         </RouterLink>
                         <span class="hof-handle hof-rotate" title="Rotate (Shift = snap)" @pointerdown.prevent.stop="startDrag( $event, p.id, 'rotate' )"></span>
                         <span class="hof-handle hof-nw" title="Scale" @pointerdown.prevent.stop="startDrag( $event, p.id, 'scale' )"></span>

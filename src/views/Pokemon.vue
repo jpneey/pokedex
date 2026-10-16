@@ -17,10 +17,7 @@
     const prev = computed(() => Pokedata[index.value - 1]);
     const next = computed(() => Pokedata[index.value + 1]);
 
-    const getImage = ( pokemonId ) => {
-        var sprite = String(pokemonId).padStart(3, '0');
-        return "../images/" + sprite + ".png";
-    }
+    import { getImage, onImageError } from '@/utils/image';
 
     const getType = ( type ) => {
         var url = String(type).toLowerCase();
@@ -58,6 +55,28 @@
         return text.replace( '', ' ' );
     }
 
+    const gallery = computed(() => {
+        const s = fetched_meta.value?.sprites;
+        if (!s) return [];
+        const o = s.other || {};
+        const items = [
+            ['Official artwork', o['official-artwork']?.front_default],
+            ['Official artwork (shiny)', o['official-artwork']?.front_shiny],
+            ['Home', o.home?.front_default],
+            ['Home (shiny)', o.home?.front_shiny],
+            ['Home (female)', o.home?.front_female],
+            ['Home (shiny female)', o.home?.front_shiny_female],
+            ['Dream world', o.dream_world?.front_default],
+            ['Showdown', o.showdown?.front_default],
+            ['Showdown (shiny)', o.showdown?.front_shiny],
+            ['Showdown (back)', o.showdown?.back_default],
+            ['Showdown (back shiny)', o.showdown?.back_shiny],
+            ['Sprite', s.front_default],
+            ['Sprite (shiny)', s.front_shiny],
+        ];
+        return items.filter(([, src]) => src).map(([label, src]) => ({ label, src }));
+    });
+
     watch(() => props.id, async ( id ) => {
         loading.value = true;
         try {
@@ -78,7 +97,7 @@
     <div :class="'bg-' + pokemon.type[0].toLowerCase()" class="position-relative mt-3 mt-md-5 rounded overflow-hidden" :key="pokemon.id">
         <p class="mega-text position-absolute start-50 translate-middle-x">{{ pokemon.name.japanese }}</p>
         <section class="pokemon mx-auto position-relative overflow-hidden">
-            <img :src="getImage( pokemon.id )" :alt="pokemon.name.english" width="400" height="400" class="pokemon-image mx-auto d-block position-relative" style="z-index: 2;">
+            <img :src="getImage( pokemon.id )" @error="onImageError( $event, pokemon.id )" :alt="pokemon.name.english" width="400" height="400" class="pokemon-image mx-auto d-block position-relative" style="z-index: 2;">
 
             <div class="pokemon-meta bg-light d-block text-body w-100 spacing position-relative">
                 <div class="content-tabs px-4 py-5 p-md-5">
@@ -127,6 +146,17 @@
                         <figure class="d-block w-100 mt-4">
                             <audio controls :src="fetched_meta.cries.latest" class="w-100"></audio>
                         </figure>
+                        <div v-if="gallery.length" class="mt-4">
+                            <h2 class="h5 mb-3">Gallery</h2>
+                            <div class="row row-cols-2 row-cols-md-3 g-2">
+                                <figure v-for="img in gallery" :key="img.src" class="col m-0 text-center">
+                                    <div class="bg-white rounded p-2 h-100 d-flex flex-column justify-content-between">
+                                        <img :src="img.src" :alt="pokemon.name.english + ' - ' + img.label" loading="lazy" class="d-block mx-auto mw-100" style="height: 120px; object-fit: contain;">
+                                        <figcaption class="small opacity-75 mt-1">{{ img.label }}</figcaption>
+                                    </div>
+                                </figure>
+                            </div>
+                        </div>
                     </template>
                 </div>
             </div>
