@@ -1,7 +1,7 @@
 <script setup>
 
     import { ref, computed, watch, defineProps } from 'vue';
-    import { RouterLink } from 'vue-router';
+    import Pokemoncard from '@/components/Pokemoncard.vue';
     import Pokedata from '../assets/pokedex.json';
     import * as Pokedex from 'pokeapi-js-wrapper';
 
@@ -134,13 +134,12 @@
         </section>
     </div>
     
-    <!-- <div class="d-flex justify-content-between mt-4 pb-4">
-        <RouterLink v-if="prev" :to="{ name: 'pokemon', params: { id: prev.id } }" class="btn btn-dark">
-            &larr; {{ prev.name.english }}
-        </RouterLink>
-        <span v-else></span>
-        <RouterLink v-if="next" :to="{ name: 'pokemon', params: { id: next.id } }" class="btn btn-dark">
-            {{ next.name.english }} &rarr;
-        </RouterLink>
-    </div> -->
+    <div class="prev-next row g-3 py-3 flex-wrap">
+        <div v-if="prev" class="col col-12 col-xl-6 mt-3">
+            <Pokemoncard :pokemon="prev" />
+        </div>
+        <div v-if="next" class="col col-12 col-xl-6 mt-3">
+            <Pokemoncard :pokemon="next" />
+        </div>
+    </div>
 </template>

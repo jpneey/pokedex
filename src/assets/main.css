@@ -234,3 +234,19 @@ html, body {
 .mobile-menu ul {
   width: 100%;
 }
+.prev-next .box {
+  padding: 10px 0;
+}
+.prev-next .meta.position-absolute.w-100.p-4.bottom-0.start-0 {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+}
+
+.prev-next .pokemon-number,
+.prev-next .meta > img {
+  display: none;
+}
+.prev-next .types {
+  margin-bottom: 0 !important;
+}
