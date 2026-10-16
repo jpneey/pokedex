@@ -7,6 +7,7 @@ import Unova from '../views/Unova.vue'
 import Kalos from '../views/Kalos.vue'
 import Galar from '../views/Galar.vue'
 import Pokemon from '../views/Pokemon.vue'
+import Team from '../views/Team.vue'
 import All from '../views/All.vue'
 
 const router = createRouter({
@@ -52,6 +53,11 @@ const router = createRouter({
       name: 'pokemon',
       component: Pokemon,
       props: true
+    },
+    {
+      path: '/team',
+      name: 'team',
+      component: Team,
     },
     {
       path: '/all',

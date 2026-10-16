@@ -11,6 +11,12 @@
         return import.meta.env.BASE_URL + "images/" + sprite + ".png";
     }
 
+    const getType = ( type ) => {
+        var url = String(type).toLowerCase();
+        return import.meta.env.BASE_URL + "types/" + url + ".svg";
+    }
+
+
 </script>
 
 <template v-if="pokemon">
@@ -22,7 +28,10 @@
             <p class="name mb-0 text-white fw-bold h4">{{ pokemon.name.english }} <code class="opacity-75 h6 text-black d-block mt-2 mt-md-0 d-md-inline"><span class="d-none d-md-inline">&mdash;</span> {{ pokemon.name.japanese }}</code> </p>
             <div class="types d-flex flex-wrap mt-1 mb-2">
                 <template v-for="type_ in pokemon.type">
-                    <span class="border border-dark badge-type me-1 my-1" :class="'bg-' + type_.toLowerCase()">{{ type_ }}</span>
+                    <span class="badge-type me-1 my-1 has-icon" :class="'bg-' + type_.toLowerCase()">
+                        <img :src="getType( type_ )" :alt="type_" width="20" height="20" loading="lazy">
+                        {{ type_ }}
+                    </span>
                 </template>
             </div>
         </div>

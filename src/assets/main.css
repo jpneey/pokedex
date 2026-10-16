@@ -191,7 +191,20 @@ html, body {
   letter-spacing: 1px;
   font-weight: bold;
   border-radius: 25px;
-  filter: contrast(1.2);
+  filter: contrast(1.4);
+}
+
+.badge-type.has-icon {
+  position: relative;
+  padding-left: 30px;
+}
+
+
+.badge-type.has-icon img {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }
 
 .mega-text {

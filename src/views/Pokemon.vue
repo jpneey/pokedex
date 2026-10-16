@@ -5,7 +5,10 @@
     import Pokedata from '../assets/pokedex.json';
     import * as Pokedex from 'pokeapi-js-wrapper';
 
+    import { useCaptured, MAX_CAPTURED } from '../composables/useCaptured';
+
     const P = new Pokedex.Pokedex()
+    const { captured, isCaptured, isFull, capture, release } = useCaptured();
 
     const props = defineProps( ['id'] );
 
@@ -18,6 +21,12 @@
         var sprite = String(pokemonId).padStart(3, '0');
         return "../images/" + sprite + ".png";
     }
+
+    const getType = ( type ) => {
+        var url = String(type).toLowerCase();
+        return "../types/" + url + ".svg";
+    }
+
 
     const base = [
         ["HP", 255],
@@ -80,9 +89,18 @@
                     </h1>
                     <div class="types d-flex flex-wrap mb-2">
                         <template v-for="type_ in pokemon.type">
-                            <span class="badge-type me-1 my-1" :class="'bg-' + type_.toLowerCase()">{{ type_ }}</span>
+                            <span class="badge-type has-icon me-1 my-1" :class="'bg-' + type_.toLowerCase()">
+                                <img :src="getType( type_ )" :alt="type_" width="20" height="20" loading="lazy">
+                                {{ type_ }}
+                            </span>
                         </template>
+                        
                     </div>
+                    <!-- <div class="mb-3">
+                        <button v-if="isCaptured( pokemon.id )" class="btn btn-sm btn-outline-dark" @click="release( pokemon.id )">Release</button>
+                        <button v-else class="btn btn-sm btn-dark" :disabled="isFull" @click="capture( pokemon.id )">Capture</button>
+                        <small class="ms-2 opacity-75">{{ captured.length }}/{{ MAX_CAPTURED }} captured<template v-if="isFull && !isCaptured( pokemon.id )"> (team full)</template></small>
+                    </div> -->
                     <template v-if="loading">
                         <div class="skeleton-line w-100"></div>
                         <div class="skeleton-line w-50"></div>
@@ -116,7 +134,7 @@
         </section>
     </div>
     
-    <div class="d-flex justify-content-between mt-4 pb-4">
+    <!-- <div class="d-flex justify-content-between mt-4 pb-4">
         <RouterLink v-if="prev" :to="{ name: 'pokemon', params: { id: prev.id } }" class="btn btn-dark">
             &larr; {{ prev.name.english }}
         </RouterLink>
@@ -124,5 +142,5 @@
         <RouterLink v-if="next" :to="{ name: 'pokemon', params: { id: next.id } }" class="btn btn-dark">
             {{ next.name.english }} &rarr;
         </RouterLink>
-    </div>
+    </div> -->
 </template>
