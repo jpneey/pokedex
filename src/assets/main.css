@@ -242,6 +242,14 @@ html, body {
   bottom: auto !important;
   left: auto !important;
 }
+.prev-next .name::before {
+  content: "Prev";
+  font-size: 14px;
+  display: block;
+  font-weight: normal;
+}
+.prev .name::before { content: "Prev"; }
+.next .name::before { content: "Next"; }
 
 .prev-next .pokemon-number,
 .prev-next .meta > img {

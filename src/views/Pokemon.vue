@@ -138,7 +138,7 @@
         <div v-if="prev" class="col col-12 col-xl-6 mt-3">
             <Pokemoncard :pokemon="prev" />
         </div>
-        <div v-if="next" class="col col-12 col-xl-6 mt-3">
+        <div v-if="next" class="col col-12 col-xl-6 mt-3 next">
             <Pokemoncard :pokemon="next" />
         </div>
     </div>
